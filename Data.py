@@ -41,7 +41,6 @@ df.dropna(subset=['Used_Price'], inplace=True)
 # 3. Handle missing 'Original Price' and select features
 df_model = df.dropna(subset=['Original_Price']).copy()
 
-#######################################
 # Convert brand names into features
 df_model['Brand'] = df_model['Mobile_Name'].str.split().str[0]  # first word as brand
 df_model['Brand'] = df_model['Brand'].astype('category').cat.codes
@@ -61,8 +60,6 @@ df_model.dropna(subset=['RAM', 'Storage', 'Original_Price', 'Used_Price'], inpla
 # Ensure all values are finite and within float32 range
 for col in df_model.select_dtypes(include=[np.number]).columns:
     df_model = df_model[np.isfinite(df_model[col])]
-
-#######################################
 
 # Save the processed dataframe to CSV
 df_model.to_csv('Data.csv', index=False)

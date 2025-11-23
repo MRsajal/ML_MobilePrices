@@ -1,9 +1,8 @@
 import pandas as pd
 from sklearn.model_selection import train_test_split
-from xgboost import XGBRegressor
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.metrics import mean_squared_error, r2_score, mean_absolute_error
-from sklearn.model_selection import GridSearchCV, RandomizedSearchCV
+from sklearn.model_selection import RandomizedSearchCV
 from scipy.stats import randint
 import numpy as np
 import re
@@ -12,9 +11,6 @@ import matplotlib.pyplot as plt
 def predict_mobile_price():
     df_model=pd.read_csv('Data.csv')
 
-
-    # Features: RAM, Storage, Original_Price
-    # features = ['RAM', 'Storage', 'Original_Price']
     features = ['RAM', 'Storage', 'Original_Price', 'Brand', 'RAM_Storage_Ratio', 'Log_Original_Price']
     target = 'Used_Price'
     
@@ -36,7 +32,6 @@ def predict_mobile_price():
 
     # 5. Model Selection and Training (Random Forest Regressor)
     print("Training Random Forest Regressor...")
-    #model = RandomForestRegressor(n_estimators=956, random_state=42,min_samples_leaf=1,max_depth=19, n_jobs=-1)
     model = RandomForestRegressor(n_estimators=253, random_state=42,min_samples_leaf=3,max_depth=20, n_jobs=-1)
     # model=XGBRegressor(
     #     n_estimators=600,
@@ -62,25 +57,6 @@ def predict_mobile_price():
     print("\nThe model has been trained and evaluated.")
 
 
-        
-    # param_grid={
-    #     'n_estimators': [50, 100, 200],
-    #     'max_depth': [5, 10, None],
-    #     'min_samples_leaf': [3, 5, 10]
-    # }
-
-    # grid_search=GridSearchCV(
-    #     estimator=RandomForestRegressor(random_state=42,n_jobs=-1),
-    #     param_grid=param_grid,
-    #     scoring='neg_mean_squared_error',
-    #     cv=5,
-    #     verbose=1,
-    #     n_jobs=-1
-    # )
-    # grid_search.fit(X_train,y_train)
-    # print("\nBest Hyperparameters from Grid Search:")
-    # print(grid_search.best_params_)
-
 
     # param_dist = {
     #     'n_estimators': randint(100, 1000),
@@ -98,27 +74,6 @@ def predict_mobile_price():
     # )
     # search.fit(X_train, y_train)
     # print("Best params:", search.best_params_)
-
-
-    # param_dist={
-    #     'n_estimators': randint(50,300),
-    #     'max_depth': [5,10,15,20,None],
-    #     'min_samples_leaf': randint(3,20)
-    # }
-
-    # random_search=RandomizedSearchCV(
-    #     estimator=RandomForestRegressor(random_state=42,n_jobs=-1),
-    #     param_distributions=param_dist,
-    #     n_iter=20,
-    #     scoring='neg_mean_squared_error',
-    #     cv=5,
-    #     verbose=1,
-    #     n_jobs=-1,
-    #     random_state=42
-    # )
-    # random_search.fit(X_train,y_train)
-    # print("\nBest Hyperparameters from Randomized Search:")
-    # print(random_search.best_params_)
 
     plt.figure(figsize=(8,6))
     plt.scatter(y_test, y_pred, alpha=0.7, color='dodgerblue', edgecolor='k')
