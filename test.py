@@ -56,7 +56,16 @@ def predict_mobile_price():
     print(f"R-squared (R2) Score: {r2:.4f}")
     print("\nThe model has been trained and evaluated.")
 
+    # print("Number of phones per company:")
+    # print(df_model['Brand'].value_counts())
 
+    # assuming you have y_test and y_pred variables
+    # comparison = pd.DataFrame({
+    #     "Actual Price": y_test.values,
+    #     "Predicted Price": y_pred
+    # })
+    # print("\nSample of Actual vs Predicted prices:")
+    # print(comparison.head(10))
 
     # param_dist = {
     #     'n_estimators': randint(100, 1000),
