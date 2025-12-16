@@ -31,6 +31,8 @@ def predict_mobile_price():
     # 4. Split data
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
+    print("Training data shape:", X_train.shape)
+    print("Testing data shape:", X_test.shape)
     # 5. Model Selection and Training (Random Forest Regressor)
     print("Training Random Forest Regressor...")
     model = RandomForestRegressor(n_estimators=253, random_state=42,min_samples_leaf=3,max_depth=20, n_jobs=-1)
