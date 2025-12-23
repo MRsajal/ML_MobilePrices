@@ -115,30 +115,30 @@ def predict_mobile_price():
     plt.show()
 
 
-    importances = model.feature_importances_
-    feature_names = X.columns
-    indices = np.argsort(importances)
+    # importances = model.feature_importances_
+    # feature_names = X.columns
+    # indices = np.argsort(importances)
 
-    plt.figure(figsize=(10, 6))
-    plt.title('Feature Importances')
-    plt.barh(range(len(indices)), importances[indices], color='skyblue', align='center')
-    plt.yticks(range(len(indices)), [feature_names[i] for i in indices])
-    plt.xlabel('Relative Importance')
-    plt.tight_layout()
-    plt.show()
+    # plt.figure(figsize=(10, 6))
+    # plt.title('Feature Importances')
+    # plt.barh(range(len(indices)), importances[indices], color='skyblue', align='center')
+    # plt.yticks(range(len(indices)), [feature_names[i] for i in indices])
+    # plt.xlabel('Relative Importance')
+    # plt.tight_layout()
+    # plt.show()
     
 
-    y_pred=model.predict(X_test)
-    residuals = y_test - y_pred
-    fig, ax = plt.subplots(1,2,figsize=(15,6))
-    sns.scatterplot(x=y_pred, y=residuals, ax=ax[0], color='purple', edgecolor='k', alpha=0.7)
-    ax[0].axhline(0, linestyle='--', color='red', linewidth=2)
-    ax[0].set_xlabel('Predicted Values')
-    ax[0].set_ylabel('Residuals')
-    ax[0].set_title('Residuals vs Predicted Values')
-    sns.histplot(residuals, bins=30, kde=True, color='orange', ax=ax[1])
-    ax[1].set_title('Distribution of Residuals')
-    plt.tight_layout()
-    plt.show()
+    # y_pred=model.predict(X_test)
+    # residuals = y_test - y_pred
+    # fig, ax = plt.subplots(1,2,figsize=(15,6))
+    # sns.scatterplot(x=y_pred, y=residuals, ax=ax[0], color='purple', edgecolor='k', alpha=0.7)
+    # ax[0].axhline(0, linestyle='--', color='red', linewidth=2)
+    # ax[0].set_xlabel('Predicted Values')
+    # ax[0].set_ylabel('Residuals')
+    # ax[0].set_title('Residuals vs Predicted Values')
+    # sns.histplot(residuals, bins=30, kde=True, color='orange', ax=ax[1])
+    # ax[1].set_title('Distribution of Residuals')
+    # plt.tight_layout()
+    # plt.show()
     
 predict_mobile_price()
