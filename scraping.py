@@ -71,7 +71,8 @@ def scrape_bikroy_mobiles():
                 
                 all_results.append({
                     'Mobile Name': mobile_name,
-                    'Price (Tk)': numerical_price
+                    'Price (Tk)': numerical_price,
+                    'Original Price':''
                 })
                 page_data_count += 1
             
@@ -87,7 +88,7 @@ def scrape_bikroy_mobiles():
     if all_results:
         try:
             with open(OUTPUT_FILE, mode='w', newline='', encoding='utf-8') as outfile:
-                fieldnames = ['Mobile Name', 'Price (Tk)']
+                fieldnames = ['Mobile Name', 'Price (Tk)', 'Original Price']
                 writer = csv.DictWriter(outfile, fieldnames=fieldnames)
                 
                 writer.writeheader()
